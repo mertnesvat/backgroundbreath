@@ -13,6 +13,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ notification: Notification) {
         setupPanel()
         setupMenuBar()
+
+        if let p = BreathPattern.all.first(where: { $0.id == breathSettings.selectedPatternId }) {
+            breathTimer.setPattern(p)
+        }
         breathTimer.start()
 
         breathSettings.$windowOpacity.sink { [weak self] val in
@@ -23,6 +27,18 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             guard let self, let panel = self.panel else { return }
             let newSize = NSSize(width: size + 28, height: size + 40)
             panel.setContentSize(newSize)
+        }.store(in: &cancellables)
+
+        breathSettings.$selectedPatternId.sink { [weak self] id in
+            guard let self,
+                  let p = BreathPattern.all.first(where: { $0.id == id }) else { return }
+            self.breathTimer.setPattern(p)
+        }.store(in: &cancellables)
+
+        breathSettings.$lockPosition.sink { [weak self] locked in
+            guard let self else { return }
+            self.panel.ignoresMouseEvents = locked
+            self.panel.isMovableByWindowBackground = !locked
         }.store(in: &cancellables)
     }
 
@@ -67,7 +83,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     @objc private func openSettings() {
         if settingsWindow == nil {
             let view = SettingsView(settings: breathSettings)
-            let contentRect = NSRect(x: 0, y: 0, width: 340, height: 420)
+            let contentRect = NSRect(x: 0, y: 0, width: 340, height: 520)
             let window = NSWindow(
                 contentRect: contentRect,
                 styleMask: [.titled, .closable],

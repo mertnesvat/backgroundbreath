@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4C91E345B11C191C1395A15A /* BreathSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314F6BE30FBD86B57120F753 /* BreathSettings.swift */; };
+		AA11BB22CC33DD44EE55FF66 /* BreathPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB22CC33DD44EE55FF6677AA /* BreathPattern.swift */; };
 		A8673973E5424EFC2CB47DDD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DAE6F52D53B2CBDB22A05B /* AppDelegate.swift */; };
 		BB81DDDF721CAE8798F14C52 /* BreathAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378F9A9118CE5E208C790BBF /* BreathAnimationView.swift */; };
 		CB183FA1B5DE280123FF36EA /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5448BD2E446E2FFF201A648 /* SettingsView.swift */; };
@@ -20,6 +21,7 @@
 		2DCAE45F6FD1EFFAEF479887 /* BackgroundBreath.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BackgroundBreath.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31436C3B44F186E019024A6E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		314F6BE30FBD86B57120F753 /* BreathSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathSettings.swift; sourceTree = "<group>"; };
+		BB22CC33DD44EE55FF6677AA /* BreathPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathPattern.swift; sourceTree = "<group>"; };
 		378F9A9118CE5E208C790BBF /* BreathAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathAnimationView.swift; sourceTree = "<group>"; };
 		3B0074F98111D5348D030008 /* FloatingPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPanel.swift; sourceTree = "<group>"; };
 		557BD5D46418211413E1827D /* BreathOverlayApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathOverlayApp.swift; sourceTree = "<group>"; };
@@ -42,6 +44,7 @@
 			children = (
 				31436C3B44F186E019024A6E /* Info.plist */,
 				C5DAE6F52D53B2CBDB22A05B /* AppDelegate.swift */,
+				BB22CC33DD44EE55FF6677AA /* BreathPattern.swift */,
 				378F9A9118CE5E208C790BBF /* BreathAnimationView.swift */,
 				557BD5D46418211413E1827D /* BreathOverlayApp.swift */,
 				314F6BE30FBD86B57120F753 /* BreathSettings.swift */,
@@ -118,6 +121,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A8673973E5424EFC2CB47DDD /* AppDelegate.swift in Sources */,
+				AA11BB22CC33DD44EE55FF66 /* BreathPattern.swift in Sources */,
 				BB81DDDF721CAE8798F14C52 /* BreathAnimationView.swift in Sources */,
 				CB742BED87CA02D5EF2A8CCF /* BreathOverlayApp.swift in Sources */,
 				4C91E345B11C191C1395A15A /* BreathSettings.swift in Sources */,

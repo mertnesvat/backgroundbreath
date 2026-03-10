@@ -1,19 +1,29 @@
 import Foundation
 import Combine
 
-enum BreathPhase { case inhale, exhale }
+enum BreathPhase { case inhale, holdAfterInhale, exhale, holdAfterExhale }
 
 final class BreathTimer: ObservableObject {
     @Published var phase: BreathPhase = .inhale
     @Published var isRunning: Bool = false
+    @Published private(set) var currentPhaseDuration: TimeInterval = 5.5
 
     private var timer: Timer?
-    let interval: TimeInterval = 5.5
+    private var pattern: BreathPattern = BreathPattern.all[0]
+    private var phaseIndex: Int = 0
+
+    func setPattern(_ p: BreathPattern) {
+        let wasRunning = isRunning
+        pause()
+        pattern = p
+        phaseIndex = 0
+        if wasRunning { start() }
+    }
 
     func start() {
         guard !isRunning else { return }
         isRunning = true
-        phase = .inhale
+        phaseIndex = 0
         scheduleNext()
     }
 
@@ -28,10 +38,14 @@ final class BreathTimer: ObservableObject {
     }
 
     private func scheduleNext() {
-        timer = Timer.scheduledTimer(withTimeInterval: interval, repeats: false) { [weak self] _ in
+        let seq = pattern.phaseSequence
+        let (nextPhase, duration) = seq[phaseIndex]
+        phase = nextPhase
+        currentPhaseDuration = duration
+        timer = Timer.scheduledTimer(withTimeInterval: duration, repeats: false) { [weak self] _ in
             DispatchQueue.main.async {
                 guard let self else { return }
-                self.phase = (self.phase == .inhale) ? .exhale : .inhale
+                self.phaseIndex = (self.phaseIndex + 1) % seq.count
                 self.scheduleNext()
             }
         }
