@@ -3,12 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 77;
+	objectVersion = 63;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C91E345B11C191C1395A15A /* BreathSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314F6BE30FBD86B57120F753 /* BreathSettings.swift */; };
 		A8673973E5424EFC2CB47DDD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DAE6F52D53B2CBDB22A05B /* AppDelegate.swift */; };
 		BB81DDDF721CAE8798F14C52 /* BreathAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378F9A9118CE5E208C790BBF /* BreathAnimationView.swift */; };
+		CB183FA1B5DE280123FF36EA /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5448BD2E446E2FFF201A648 /* SettingsView.swift */; };
 		CB742BED87CA02D5EF2A8CCF /* BreathOverlayApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557BD5D46418211413E1827D /* BreathOverlayApp.swift */; };
 		DB19576D35C9A9C51294512A /* BreathTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D912E4A860E904910A19F02C /* BreathTimer.swift */; };
 		E5D8F0545BF372412A86E8C3 /* FloatingPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0074F98111D5348D030008 /* FloatingPanel.swift */; };
@@ -16,12 +18,14 @@
 
 /* Begin PBXFileReference section */
 		2DCAE45F6FD1EFFAEF479887 /* BackgroundBreath.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BackgroundBreath.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		31436C3B44F186E019024A6E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		31436C3B44F186E019024A6E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		314F6BE30FBD86B57120F753 /* BreathSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathSettings.swift; sourceTree = "<group>"; };
 		378F9A9118CE5E208C790BBF /* BreathAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathAnimationView.swift; sourceTree = "<group>"; };
 		3B0074F98111D5348D030008 /* FloatingPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPanel.swift; sourceTree = "<group>"; };
 		557BD5D46418211413E1827D /* BreathOverlayApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathOverlayApp.swift; sourceTree = "<group>"; };
 		C5DAE6F52D53B2CBDB22A05B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D912E4A860E904910A19F02C /* BreathTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathTimer.swift; sourceTree = "<group>"; };
+		F5448BD2E446E2FFF201A648 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -36,12 +40,14 @@
 		7354248F8B2FE6C90F0CFDE3 /* BackgroundBreath */ = {
 			isa = PBXGroup;
 			children = (
+				31436C3B44F186E019024A6E /* Info.plist */,
 				C5DAE6F52D53B2CBDB22A05B /* AppDelegate.swift */,
 				378F9A9118CE5E208C790BBF /* BreathAnimationView.swift */,
 				557BD5D46418211413E1827D /* BreathOverlayApp.swift */,
+				314F6BE30FBD86B57120F753 /* BreathSettings.swift */,
 				D912E4A860E904910A19F02C /* BreathTimer.swift */,
 				3B0074F98111D5348D030008 /* FloatingPanel.swift */,
-				31436C3B44F186E019024A6E /* Info.plist */,
+				F5448BD2E446E2FFF201A648 /* SettingsView.swift */,
 			);
 			path = BackgroundBreath;
 			sourceTree = "<group>";
@@ -84,7 +90,6 @@
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					B08413E48E40A39DB2EB0A9C = {
-						DevelopmentTeam = "";
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -99,7 +104,6 @@
 			);
 			mainGroup = 2E7B59EF6E7DAD690FB98517;
 			minimizedProjectReferenceProxies = 1;
-			preferredProjectObjectVersion = 77;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -116,8 +120,10 @@
 				A8673973E5424EFC2CB47DDD /* AppDelegate.swift in Sources */,
 				BB81DDDF721CAE8798F14C52 /* BreathAnimationView.swift in Sources */,
 				CB742BED87CA02D5EF2A8CCF /* BreathOverlayApp.swift in Sources */,
+				4C91E345B11C191C1395A15A /* BreathSettings.swift in Sources */,
 				DB19576D35C9A9C51294512A /* BreathTimer.swift in Sources */,
 				E5D8F0545BF372412A86E8C3 /* FloatingPanel.swift in Sources */,
+				CB183FA1B5DE280123FF36EA /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,6 +201,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 5C6693YG48;
 				INFOPLIST_FILE = BackgroundBreath/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -269,6 +276,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 5C6693YG48;
 				INFOPLIST_FILE = BackgroundBreath/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

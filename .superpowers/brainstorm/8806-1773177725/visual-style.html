@@ -1,0 +1,93 @@
+<style>
+  .preview-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 120px;
+    background: #0a0a0a;
+    border-radius: 6px;
+    margin-bottom: 0;
+  }
+
+  @keyframes breathe-scale {
+    0%, 100% { transform: scale(0.6); opacity: 0.5; }
+    50% { transform: scale(1); opacity: 1; }
+  }
+
+  .circle-glow {
+    width: 52px; height: 52px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(120,190,255,1) 0%, rgba(60,130,230,0.6) 40%, transparent 70%);
+    box-shadow: 0 0 24px 8px rgba(100,170,255,0.5), 0 0 60px 20px rgba(80,140,255,0.2);
+    animation: breathe-scale 3s ease-in-out infinite;
+  }
+
+  .circle-ring {
+    width: 52px; height: 52px; border-radius: 50%;
+    border: 2px solid rgba(200,220,255,0.6);
+    box-shadow: 0 0 12px rgba(180,210,255,0.3), inset 0 0 12px rgba(180,210,255,0.1);
+    animation: breathe-scale 3s ease-in-out infinite;
+  }
+
+  .circle-minimal {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: rgba(255,255,255,0.15);
+    box-shadow: 0 0 8px rgba(255,255,255,0.3);
+    animation: breathe-scale 3s ease-in-out infinite;
+  }
+
+  .circle-warm {
+    width: 52px; height: 52px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,200,100,1) 0%, rgba(255,130,60,0.5) 40%, transparent 70%);
+    box-shadow: 0 0 24px 8px rgba(255,180,80,0.5), 0 0 60px 20px rgba(255,130,60,0.2);
+    animation: breathe-scale 3s ease-in-out infinite;
+  }
+</style>
+
+<h2>What should the breathing circle look like?</h2>
+<p class="subtitle">All are ~15% opacity in the final app — previewed brighter here so you can compare styles. Animation is live.</p>
+
+<div class="cards">
+
+  <div class="card" data-choice="glow-blue" onclick="toggleSelect(this)">
+    <div class="card-image preview-wrap">
+      <div class="circle-glow"></div>
+    </div>
+    <div class="card-body">
+      <h3>Soft glow — blue</h3>
+      <p>Filled radial gradient with a strong halo. Feels calm, techy, like a pulse. The spec's original vision.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="ring" onclick="toggleSelect(this)">
+    <div class="card-image preview-wrap">
+      <div class="circle-ring"></div>
+    </div>
+    <div class="card-body">
+      <h3>Ring only</h3>
+      <p>Just an expanding/contracting outline. Minimal, elegant — less intrusive, more like a timer ring.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="minimal-white" onclick="toggleSelect(this)">
+    <div class="card-image preview-wrap">
+      <div class="circle-minimal"></div>
+    </div>
+    <div class="card-body">
+      <h3>Minimal dot — white</h3>
+      <p>Ultra-subtle. A small translucent white orb that pulses. Nearly invisible, pure peripheral cue.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="glow-warm" onclick="toggleSelect(this)">
+    <div class="card-image preview-wrap">
+      <div class="circle-warm"></div>
+    </div>
+    <div class="card-body">
+      <h3>Soft glow — warm</h3>
+      <p>Same glow as option A but amber/orange tones. Warmer, less clinical, more candlelike.</p>
+    </div>
+  </div>
+
+</div>
+
+<p class="subtitle" style="margin-top:16px;font-size:12px;">Click to select, then reply in terminal</p>
