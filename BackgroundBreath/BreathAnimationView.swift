@@ -25,7 +25,7 @@ struct BreathAnimationView: View {
                 .shadow(color: Color(red: 1.0, green: 0.7, blue: 0.3).opacity(0.6), radius: 16)
                 .shadow(color: Color(red: 1.0, green: 0.5, blue: 0.2).opacity(0.25), radius: 40)
                 .scaleEffect(scale)
-                .animation(.easeInOut(duration: 5.5), value: timer.phase)
+                .animation(.easeInOut(duration: timer.interval), value: timer.phase)
 
             Text(label)
                 .font(.system(size: 9, weight: .regular, design: .rounded))

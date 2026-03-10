@@ -8,7 +8,7 @@ final class BreathTimer: ObservableObject {
     @Published var isRunning: Bool = false
 
     private var timer: Timer?
-    private let interval: TimeInterval = 5.5
+    let interval: TimeInterval = 5.5
 
     func start() {
         guard !isRunning else { return }
@@ -29,9 +29,11 @@ final class BreathTimer: ObservableObject {
 
     private func scheduleNext() {
         timer = Timer.scheduledTimer(withTimeInterval: interval, repeats: false) { [weak self] _ in
-            guard let self else { return }
-            self.phase = (self.phase == .inhale) ? .exhale : .inhale
-            self.scheduleNext()
+            DispatchQueue.main.async {
+                guard let self else { return }
+                self.phase = (self.phase == .inhale) ? .exhale : .inhale
+                self.scheduleNext()
+            }
         }
     }
 }
