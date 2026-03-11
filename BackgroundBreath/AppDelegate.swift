@@ -83,7 +83,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     @objc private func openSettings() {
         if settingsWindow == nil {
             let view = SettingsView(settings: breathSettings)
-            let contentRect = NSRect(x: 0, y: 0, width: 340, height: 520)
+            let contentRect = NSRect(x: 0, y: 0, width: 340, height: 680)
             let window = NSWindow(
                 contentRect: contentRect,
                 styleMask: [.titled, .closable],

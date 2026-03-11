@@ -48,8 +48,52 @@ struct SettingsView: View {
                 phaseColorRow("Exhale", hue: $settings.exhaleHue)
                 phaseColorRow("Hold",   hue: $settings.holdHue)
             }
+
+            Section("About") {
+                aboutContent
+            }
         }
         .formStyle(.grouped)
+    }
+
+    // MARK: - About
+
+    private var aboutContent: some View {
+        let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "1.0"
+
+        return VStack(alignment: .leading, spacing: 12) {
+            HStack(spacing: 10) {
+                Image(systemName: "lungs.fill")
+                    .font(.system(size: 28))
+                    .foregroundColor(Color(hue: settings.inhaleHue, saturation: 0.7, brightness: 0.9))
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("BackgroundBreath")
+                        .font(.system(size: 13, weight: .semibold))
+                    Text("Version \(version)")
+                        .font(.system(size: 11))
+                        .foregroundColor(.secondary)
+                }
+            }
+
+            Divider()
+
+            Text("Slow, rhythmic breathing activates the parasympathetic nervous system — reducing cortisol, lowering heart rate, and sharpening focus. Even a few minutes a day builds lasting resilience.")
+                .font(.system(size: 11))
+                .foregroundColor(.secondary)
+                .fixedSize(horizontal: false, vertical: true)
+                .lineSpacing(3)
+
+            Divider()
+
+            HStack {
+                Text("Made by")
+                    .font(.system(size: 11))
+                    .foregroundColor(.secondary)
+                Link("Studio Next", destination: URL(string: "https://studionext.co.uk")!)
+                    .font(.system(size: 11, weight: .medium))
+            }
+        }
+        .padding(.vertical, 4)
     }
 
     // MARK: - Pattern summary
