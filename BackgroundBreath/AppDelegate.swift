@@ -1,6 +1,7 @@
 import AppKit
 import SwiftUI
 import Combine
+import ServiceManagement
 
 final class AppDelegate: NSObject, NSApplicationDelegate {
     private var statusItem: NSStatusItem!
@@ -8,6 +9,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     private let breathTimer = BreathTimer()
     let breathSettings = BreathSettings()
     private var settingsWindow: NSWindow?
+    private var aboutWindow: NSWindow?
     private var cancellables = Set<AnyCancellable>()
 
     func applicationDidFinishLaunching(_ notification: Notification) {
@@ -18,6 +20,12 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             breathTimer.setPattern(p)
         }
         breathTimer.start()
+
+        // Enable launch at login by default on first run
+        if !UserDefaults.standard.bool(forKey: "hasConfiguredLaunchAtLogin") {
+            try? SMAppService.mainApp.register()
+            UserDefaults.standard.set(true, forKey: "hasConfiguredLaunchAtLogin")
+        }
 
         breathSettings.$windowOpacity.sink { [weak self] val in
             self?.panel.alphaValue = val
@@ -33,6 +41,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             guard let self,
                   let p = BreathPattern.all.first(where: { $0.id == id }) else { return }
             self.breathTimer.setPattern(p)
+            self.buildMenu()
         }.store(in: &cancellables)
 
         breathSettings.$lockPosition.sink { [weak self] locked in
@@ -62,15 +71,47 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
     private func buildMenu() {
         let menu = NSMenu()
-        let toggleItem = NSMenuItem(
+
+        // Start / Pause
+        menu.addItem(NSMenuItem(
             title: breathTimer.isRunning ? "Pause" : "Start",
             action: #selector(toggleBreath),
             keyEquivalent: ""
-        )
-        menu.addItem(toggleItem)
-        menu.addItem(NSMenuItem(title: "Settings…", action: #selector(openSettings), keyEquivalent: ","))
+        ))
+
         menu.addItem(.separator())
+
+        // Breathing Pattern submenu
+        let patternSubmenu = NSMenu()
+        for pattern in BreathPattern.all {
+            let item = NSMenuItem(title: pattern.name, action: #selector(selectPattern(_:)), keyEquivalent: "")
+            item.representedObject = pattern.id
+            item.state = pattern.id == breathSettings.selectedPatternId ? .on : .off
+            patternSubmenu.addItem(item)
+        }
+        let patternItem = NSMenuItem(title: "Breathing Pattern", action: nil, keyEquivalent: "")
+        patternItem.submenu = patternSubmenu
+        menu.addItem(patternItem)
+
+        menu.addItem(.separator())
+
+        // Appearance (orb UI settings)
+        menu.addItem(NSMenuItem(title: "Orb Appearance…", action: #selector(openSettings), keyEquivalent: ","))
+
+        // Launch at Login
+        let loginItem = NSMenuItem(title: "Launch at Login", action: #selector(toggleLaunchAtLogin), keyEquivalent: "")
+        loginItem.state = (SMAppService.mainApp.status == .enabled) ? .on : .off
+        menu.addItem(loginItem)
+
+        menu.addItem(.separator())
+
+        // About
+        menu.addItem(NSMenuItem(title: "About BackgroundBreath", action: #selector(openAbout), keyEquivalent: ""))
+
+        menu.addItem(.separator())
+
         menu.addItem(NSMenuItem(title: "Quit", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
+
         statusItem.menu = menu
     }
 
@@ -80,23 +121,60 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         updateMenuBarIcon()
     }
 
+    @objc private func selectPattern(_ sender: NSMenuItem) {
+        guard let id = sender.representedObject as? String else { return }
+        breathSettings.selectedPatternId = id
+        // buildMenu() is called via the selectedPatternId sink
+    }
+
+    @objc private func toggleLaunchAtLogin() {
+        do {
+            if SMAppService.mainApp.status == .enabled {
+                try SMAppService.mainApp.unregister()
+            } else {
+                try SMAppService.mainApp.register()
+            }
+        } catch {
+            // silently ignore — user can retry
+        }
+        buildMenu()
+    }
+
     @objc private func openSettings() {
         if settingsWindow == nil {
             let view = SettingsView(settings: breathSettings)
-            let contentRect = NSRect(x: 0, y: 0, width: 340, height: 680)
             let window = NSWindow(
-                contentRect: contentRect,
+                contentRect: NSRect(x: 0, y: 0, width: 340, height: 480),
                 styleMask: [.titled, .closable],
                 backing: .buffered,
                 defer: false
             )
-            window.title = "BackgroundBreath Settings"
+            window.title = "Orb Appearance"
             window.isReleasedWhenClosed = false
             window.contentView = NSHostingView(rootView: view)
             window.center()
             settingsWindow = window
         }
         settingsWindow?.makeKeyAndOrderFront(nil)
+        NSApp.activate(ignoringOtherApps: true)
+    }
+
+    @objc private func openAbout() {
+        if aboutWindow == nil {
+            let view = AboutView(settings: breathSettings)
+            let window = NSWindow(
+                contentRect: NSRect(x: 0, y: 0, width: 320, height: 300),
+                styleMask: [.titled, .closable],
+                backing: .buffered,
+                defer: false
+            )
+            window.title = "About BackgroundBreath"
+            window.isReleasedWhenClosed = false
+            window.contentView = NSHostingView(rootView: view)
+            window.center()
+            aboutWindow = window
+        }
+        aboutWindow?.makeKeyAndOrderFront(nil)
         NSApp.activate(ignoringOtherApps: true)
     }
 
