@@ -6,26 +6,42 @@ struct SettingsView: View {
 
     var body: some View {
         Form {
-            // Live preview at the top
+            // Preview + primary control
             Section {
                 livePreview
+
+                Toggle(isOn: $settings.lockPosition) {
+                    HStack(spacing: 6) {
+                        Image(systemName: settings.lockPosition ? "lock.fill" : "lock.open")
+                            .foregroundColor(settings.lockPosition ? .secondary : .accentColor)
+                            .frame(width: 16)
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text(settings.lockPosition ? "Position locked" : "Position unlocked")
+                            Text(settings.lockPosition
+                                 ? "Clicks pass through to windows behind"
+                                 : "Drag the triangle to reposition")
+                                .font(.caption2)
+                                .foregroundColor(.secondary)
+                        }
+                    }
+                }
             }
 
             Section("Style") {
                 stylePicker
             }
 
-            Section("Appearance") {
-                LabeledContent("Opacity") {
-                    Slider(value: $settings.windowOpacity, in: 0.1...1.0)
-                    Text("\(Int(settings.windowOpacity * 100))%")
+            Section("Display") {
+                LabeledContent("Size") {
+                    Slider(value: $settings.orbSize, in: 30...800)
+                    Text("\(Int(settings.orbSize))pt")
                         .monospacedDigit()
                         .frame(width: 36, alignment: .trailing)
                 }
 
-                LabeledContent("Size") {
-                    Slider(value: $settings.orbSize, in: 30...800)
-                    Text("\(Int(settings.orbSize))pt")
+                LabeledContent("Opacity") {
+                    Slider(value: $settings.windowOpacity, in: 0.1...1.0)
+                    Text("\(Int(settings.windowOpacity * 100))%")
                         .monospacedDigit()
                         .frame(width: 36, alignment: .trailing)
                 }
@@ -37,19 +53,10 @@ struct SettingsView: View {
                         .frame(width: 36, alignment: .trailing)
                 }
 
-                Toggle("Show label", isOn: $settings.showLabel)
-
-                Toggle(isOn: $settings.lockPosition) {
-                    VStack(alignment: .leading, spacing: 2) {
-                        Text("Lock position")
-                        Text("Clicks pass through to windows behind")
-                            .font(.caption2)
-                            .foregroundColor(.secondary)
-                    }
-                }
+                Toggle("Show phase label", isOn: $settings.showLabel)
             }
 
-            Section("Phase Colors") {
+            Section("Colors") {
                 phaseColorRow("Inhale", hue: $settings.inhaleHue)
                 phaseColorRow("Exhale", hue: $settings.exhaleHue)
                 phaseColorRow("Hold",   hue: $settings.holdHue)

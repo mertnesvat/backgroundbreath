@@ -152,11 +152,11 @@
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					9E2F8A94F256F719972D1F99 = {
-						DevelopmentTeam = "";
+						DevelopmentTeam = 5C6693YG48;
 						ProvisioningStyle = Automatic;
 					};
 					B08413E48E40A39DB2EB0A9C = {
-						DevelopmentTeam = "";
+						DevelopmentTeam = 5C6693YG48;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -258,7 +258,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 5C6693YG48;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -279,7 +279,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.backgroundbreath.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.StudioNext.Breathe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -356,7 +356,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 5C6693YG48;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -370,7 +370,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.backgroundbreath.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.StudioNext.Breathe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;

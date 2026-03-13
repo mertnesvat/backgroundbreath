@@ -1,6 +1,6 @@
 name: BackgroundBreath
 options:
-  bundleIdPrefix: com.backgroundbreath
+  bundleIdPrefix: com.StudioNext
   deploymentTarget:
     macOS: "13.0"
   createIntermediateGroups: true
@@ -10,8 +10,8 @@ settings:
     SWIFT_VERSION: "5.9"
     MACOSX_DEPLOYMENT_TARGET: "13.0"
     CODE_SIGN_STYLE: Automatic
-    DEVELOPMENT_TEAM: ""
-    PRODUCT_BUNDLE_IDENTIFIER: com.backgroundbreath.app
+    DEVELOPMENT_TEAM: 5C6693YG48
+    PRODUCT_BUNDLE_IDENTIFIER: com.StudioNext.Breathe
 
 targets:
   BackgroundBreath:
