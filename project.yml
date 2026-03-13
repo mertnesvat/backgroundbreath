@@ -36,3 +36,17 @@ targets:
       base:
         INFOPLIST_FILE: BackgroundBreath/Info.plist
         PRODUCT_NAME: BackgroundBreath
+
+  BackgroundBreathTests:
+    type: bundle.unit-test
+    platform: macOS
+    sources:
+      - path: BackgroundBreathTests
+    dependencies:
+      - target: BackgroundBreath
+    settings:
+      base:
+        PRODUCT_NAME: BackgroundBreathTests
+        GENERATE_INFOPLIST_FILE: YES
+        BUNDLE_LOADER: "$(TEST_HOST)"
+        TEST_HOST: "$(BUILT_PRODUCTS_DIR)/BackgroundBreath.app/Contents/MacOS/BackgroundBreath"

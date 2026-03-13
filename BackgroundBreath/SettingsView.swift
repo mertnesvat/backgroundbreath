@@ -5,6 +5,21 @@ struct SettingsView: View {
 
     var body: some View {
         Form {
+            Section("Style") {
+                Picker("Style", selection: $settings.selectedStyle) {
+                    ForEach(BreathStyle.allCases) { style in
+                        VStack(alignment: .leading) {
+                            Text(style.displayName)
+                            Text(style.subtitle)
+                                .font(.caption2)
+                                .foregroundColor(.secondary)
+                        }
+                        .tag(style)
+                    }
+                }
+                .pickerStyle(.radioGroup)
+            }
+
             Section("Appearance") {
                 phasePreviewOrbs
 

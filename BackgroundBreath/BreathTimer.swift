@@ -7,6 +7,12 @@ final class BreathTimer: ObservableObject {
     @Published var phase: BreathPhase = .inhale
     @Published var isRunning: Bool = false
     @Published private(set) var currentPhaseDuration: TimeInterval = 5.5
+    @Published private(set) var phaseStartDate: Date = Date()
+
+    var phaseProgress: Double {
+        let elapsed = Date().timeIntervalSince(phaseStartDate)
+        return min(max(elapsed / currentPhaseDuration, 0), 1)
+    }
 
     private var timer: Timer?
     private var pattern: BreathPattern = BreathPattern.all[0]
@@ -42,6 +48,7 @@ final class BreathTimer: ObservableObject {
         let (nextPhase, duration) = seq[phaseIndex]
         phase = nextPhase
         currentPhaseDuration = duration
+        phaseStartDate = Date()
         timer = Timer.scheduledTimer(withTimeInterval: duration, repeats: false) { [weak self] _ in
             DispatchQueue.main.async {
                 guard let self else { return }

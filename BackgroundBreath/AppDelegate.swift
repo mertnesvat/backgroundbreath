@@ -57,7 +57,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         let origin = NSPoint(x: screen.maxX - size.width - 40, y: screen.minY + 40)
         panel = FloatingPanel(contentRect: NSRect(origin: origin, size: size))
 
-        let view = BreathAnimationView(timer: breathTimer, settings: breathSettings)
+        let view = TriangleBreathView(timer: breathTimer, settings: breathSettings)
         panel.contentView = NSHostingView(rootView: view)
         panel.alphaValue = breathSettings.windowOpacity
         panel.orderFrontRegardless()
@@ -96,7 +96,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         menu.addItem(.separator())
 
         // Appearance (orb UI settings)
-        menu.addItem(NSMenuItem(title: "Orb Appearance…", action: #selector(openSettings), keyEquivalent: ","))
+        menu.addItem(NSMenuItem(title: "Appearance…", action: #selector(openSettings), keyEquivalent: ","))
 
         // Launch at Login
         let loginItem = NSMenuItem(title: "Launch at Login", action: #selector(toggleLaunchAtLogin), keyEquivalent: "")
@@ -149,7 +149,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
                 backing: .buffered,
                 defer: false
             )
-            window.title = "Orb Appearance"
+            window.title = "Appearance"
             window.isReleasedWhenClosed = false
             window.contentView = NSHostingView(rootView: view)
             window.center()
@@ -179,6 +179,6 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     private func updateMenuBarIcon() {
-        statusItem.button?.title = "◉"
+        statusItem.button?.image = NSImage(systemSymbolName: "triangle", accessibilityDescription: "BackgroundBreath")
     }
 }
