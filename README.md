@@ -12,7 +12,7 @@
 
 <p align="center">
   <a href="https://github.com/mertnesvat/backgroundbreath/releases/latest">
-    <img src="https://img.shields.io/github/v/release/mertnesvat/backgroundbreath?style=flat-square" alt="Latest Release">
+    <img src="https://img.shields.io/badge/release-v1.0-blue?style=flat-square" alt="Latest Release">
   </a>
   <img src="https://img.shields.io/badge/platform-macOS%2013%2B-blue?style=flat-square" alt="Platform">
   <img src="https://img.shields.io/badge/swift-5.9-orange?style=flat-square" alt="Swift">
