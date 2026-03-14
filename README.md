@@ -31,6 +31,10 @@ Slow, rhythmic breathing activates the parasympathetic nervous system — reduci
 
 ## How It Works
 
+<p align="center">
+  <img src="assets/breathing-demo.gif" width="600" alt="BackgroundBreath triangle breathing on desktop">
+</p>
+
 The breathing indicator is a **triangle drawn as a continuous path**. Each edge maps to a phase of your breath:
 
 ```
@@ -42,6 +46,10 @@ The breathing indicator is a **triangle drawn as a continuous path**. Each edge 
 ```
 
 The triangle tells a spatial story: inhale climbs, exhale descends. You always know where you are in the breath cycle by where the activity is on the triangle.
+
+<p align="center">
+  <img src="assets/settings-demo.gif" width="320" alt="BackgroundBreath settings and customization">
+</p>
 
 ## Features
 
