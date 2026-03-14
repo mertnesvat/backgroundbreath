@@ -1,0 +1,22 @@
+# macOS
+.DS_Store
+
+# Xcode
+DerivedData/
+*.xcuserdata/
+xcuserdata/
+*.xcscmblueprint
+
+# Build
+build/
+.build/
+*.swiftpm/
+
+# Firebase
+firebase-debug.log
+
+# IDE
+.claude/
+.superpowers/
+*.swp
+*~

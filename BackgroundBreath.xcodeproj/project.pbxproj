@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		372103C5CA64B845D3B391C3 /* BreathStyleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F67CDF8F34A3E672B9ECB31 /* BreathStyleTests.swift */; };
 		3CE24E452FF7F127DF000B04 /* TriangleSegmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDD69AB072A3427161D5BE6 /* TriangleSegmentTests.swift */; };
+		41ACD0A0036CC7FED09F87FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7918D684522A20586A38A78A /* Assets.xcassets */; };
 		4C91E345B11C191C1395A15A /* BreathSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314F6BE30FBD86B57120F753 /* BreathSettings.swift */; };
 		548A0F8645C0631E11F369CB /* BreathTimerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69CC49D0D42ACDCAB8D602F7 /* BreathTimerTests.swift */; };
 		5DC8BED8592F4BCFE6145A26 /* BreathSettingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4321277F422F9525F7734F /* BreathSettingsTests.swift */; };
@@ -47,6 +48,7 @@
 		4F6E6CB8BAF001A3BEDF2DD2 /* BackgroundBreathTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BackgroundBreathTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		557BD5D46418211413E1827D /* BreathOverlayApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathOverlayApp.swift; sourceTree = "<group>"; };
 		69CC49D0D42ACDCAB8D602F7 /* BreathTimerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathTimerTests.swift; sourceTree = "<group>"; };
+		7918D684522A20586A38A78A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		80FFF6DD96EFC4B03DB1E064 /* TriangleBreathView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriangleBreathView.swift; sourceTree = "<group>"; };
 		86DCB536B7ECEC269DFB632D /* BreathStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathStyle.swift; sourceTree = "<group>"; };
 		C5DAE6F52D53B2CBDB22A05B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				C5DAE6F52D53B2CBDB22A05B /* AppDelegate.swift */,
+				7918D684522A20586A38A78A /* Assets.xcassets */,
 				378F9A9118CE5E208C790BBF /* BreathAnimationView.swift */,
 				557BD5D46418211413E1827D /* BreathOverlayApp.swift */,
 				0557598710A8BD6725140AE2 /* BreathPattern.swift */,
@@ -130,6 +133,7 @@
 			buildConfigurationList = 4EE5FDBFCD0BADB17A4316CC /* Build configuration list for PBXNativeTarget "BackgroundBreath" */;
 			buildPhases = (
 				3824C50E9E90C366F9155E07 /* Sources */,
+				BAE6E714A237ACADEF185E14 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -152,11 +156,11 @@
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					9E2F8A94F256F719972D1F99 = {
-						DevelopmentTeam = 5C6693YG48;
+						DevelopmentTeam = "";
 						ProvisioningStyle = Automatic;
 					};
 					B08413E48E40A39DB2EB0A9C = {
-						DevelopmentTeam = 5C6693YG48;
+						DevelopmentTeam = "";
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -180,6 +184,17 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BAE6E714A237ACADEF185E14 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				41ACD0A0036CC7FED09F87FB /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3824C50E9E90C366F9155E07 /* Sources */ = {
@@ -258,7 +273,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = 5C6693YG48;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -356,7 +371,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 5C6693YG48;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
